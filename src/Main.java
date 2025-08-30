@@ -20,5 +20,12 @@ public class Main {
 //                              удалить      изменить        добавление   удаление   обновление  выборка данных
 //                                                          новый строк                          (используется чаще всего)
 
+
+        //schemas it`s something like packets in java
+
+        //now i`am work from idea, but i can work from SQL shell
+
+        //I start in postgres database, I can switch to another.But if I want to leave current database,
+        // I need to switch to another, I cannot leave from database
     }
 }
