@@ -27,5 +27,7 @@ public class Main {
 
         //I start in postgres database, I can switch to another.But if I want to leave current database,
         // I need to switch to another, I cannot leave from database
+
+        //now I am know how to write comments in SQL, I start commenting there
     }
 }
