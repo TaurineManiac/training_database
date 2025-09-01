@@ -53,28 +53,52 @@ DROP SCHEMA company_storage;
 --For run full code or part Ctrl+Enter
 
 CREATE TABLE company(
-    if INT,
+    id INT,
     name TEXT,
     --Now I understand how to write a comments is SQL
-            --TEXT is like a String
-            --And some more limited by bytes variants: VARCHAR(here write size), CHAR(only 120 bytes)
-date DATE
+    --TEXT is like a String
+    --And some more limited by bytes variants: VARCHAR(here write size), CHAR(only 120 bytes)
+    date DATE
     --DATE(only date), but if I need date and time, I need to use TIMESTAMP, only time - TIME
 );
 
-        --Ok but I created in public schema, I can choose between 2 variants:
-        --1. Choose right schema in right-up corner
+--Ok but I created in public schema, I can choose between 2 variants:
+--1. Choose right schema in right-up corner
 --2. Write in code in which schema table will be located
 
 DROP TABLE public.company;--here will be error if I DROP smth, that I write here
 
 --2nd variant:
 CREATE TABLE company_storage.company(
-                        if INT,
-                        name TEXT,
-                        date DATE
+                                        id INT PRIMARY KEY ,
+                                        name TEXT UNIQUE NOT NULL ,
+                                        date DATE NOT NULL CHECK(date > '1994-01-01' AND date<'2009-01-01')
+                                        --Also I can do like this(set multiple cionstraits to parameters)
+--                                         UNIQUE (date)
+--Not Null (very speaking name)
+--UNIQUE (do unique columns)
+--CHECK (check condition(условие) like an 'if')
+--PRIMARY KEY (== UNIQUE + NOT NULL but can use only one 1 parameter)
+--FOREIGN KEY
 
 );
+
+
+--Insert into
+--Proper manners:
+INSERT INTO company(id,name,date) VALUES (1,'Google', '2001-01-01'),
+                                         (1337,'Apple','2001-08-25'),
+                                         (228,'Samsung', '2000-01-02');
+--ofc I can write smth in 1 command
+--Date writing like this : XXXX-XX-XX
+
+
+--Ok, but I see, if I use INSERT INTO 2 times with similar value, it will be writed in 2 different row
+--For this we have CONSTRAINT:
+--If writing some parameters, that not suitable(подходит)
+
+DROP TABLE company_storage.company
+
 
 
 
