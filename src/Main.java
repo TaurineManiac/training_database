@@ -101,5 +101,56 @@ DROP TABLE company_storage.company
 
 
 
+CREATE SCHEMA company_storage_2;
+
+CREATE TABLE company_storage_2.company(
+    id SERIAL, --SERIAL is type of data type
+    --SERIAL = INTEGER + SEQUENCE
+    --SEQUENCE == random, but this random is like a independence structure,
+    -- which not linked with other classes
+
+    name TEXT,
+    date TIMESTAMP,
+
+    PRIMARY KEY (id),
+    UNIQUE (name)
+--     SERIAL(id)
+    --I cant doing like that, becurse SERIAL is not CONSTRAINTS
+
+
+);
+
+INSERT INTO company_storage_2.company(name, date) VALUES ('Samsung', '25-08-15'),
+                                                         ('Apple','1998-12-25');
+--id generated automatically
+
+
+TRUNCATE TABLE company_storage_2.company RESTART IDENTITY;--Clear table
+
+
+--Get full table, * like in java get all part of library
+SELECT * FROM company_storage_2.company;
+
+--Get specific class field
+SELECT name,date FROM company_storage_2.company;
+
+-- Aliases, I can write aliases on different languages on name columns
+SELECT
+    id AS "Индефикатор",
+    name AS "Название компании",
+    date AS "Дата основания"
+FROM company_storage_2.company;
+
+--It returns table for us as a table with name "t"
+SELECT t.id, t.name, t.date FROM company_storage_2.company AS t;
+
+SELECT
+    id AS indeficator,
+    EXTRACT(YEAR FROM date) AS year_founded,
+    CURRENT_DATE - date AS days_since_founded
+FROM company_storage_2.company;
+--EXTRACT took part of smth, in this moment is took year from date
+
+
 
  */
