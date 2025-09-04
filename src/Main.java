@@ -42,8 +42,6 @@ public class Main {
 
 
 /*
-
-
 CREATE DATABASE company_repository;
 
 CREATE SCHEMA company_storage;
@@ -150,6 +148,39 @@ SELECT
     CURRENT_DATE - date AS days_since_founded
 FROM company_storage_2.company;
 --EXTRACT took part of smth, in this moment is took year from date
+
+
+--Get Unique name,id from table
+SELECT DISTINCT name,id FROM company_storage_2.company;
+
+
+--Skip 2 rows and write 3
+SELECT * FROM company_storage_2.company LIMIT 3 OFFSET 2;
+
+
+--Pagination is like a devide by pages, in this situation we on page 1, because we skip 0 and read 10
+SELECT * FROM company_storage_2.company LIMIT 10 OFFSET 0;
+--But here we on page 2, because we skip 10 and read 10;
+SELECT * FROM company_storage_2.company LIMIT 10 OFFSET 10;
+
+
+
+--Print table and sort rows by name field
+SELECT * FROM company_storage_2.company ORDER BY name;
+
+--descending (нисходящий), mean reverse sorting
+SELECT * FROM company_storage_2.company ORDER BY name DESC ;
+
+--Sort firstly by reverse date, secondaly name
+SELECT * FROM company_storage_2.company
+ORDER BY date DESC, name;
+
+--Sort by expression,like math
+SELECT * FROM company_storage_2.company
+ORDER BY length(name)
+
+
+
 
 
 
